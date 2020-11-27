@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const bodyParser = require('body-parser');
-const routes = require('./routes/usuario');
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,7 +13,9 @@ require('./config/config');
 
 app.use(bodyParser.json());
 
-app.use(routes);
+//configuración global de rutas
+app.use(require('./routes/index'));
+
 
 
 mongoose.connect(process.env.URLDB, {
